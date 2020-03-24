@@ -5,8 +5,9 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-
 export class MediaItemService {
+  constructor(private http: HttpClient) {}
+
   mediaItems = [
     {
       id: 1,
@@ -52,11 +53,13 @@ export class MediaItemService {
     }
   ];
 
-  constructor(private http: HttpClient) {}
-
   get() {
-    return this.http.get<MediaItemResponse>('mediaItems')
-      .pipe(map(response => { return response.mediaItems; }))
+    return this.http.get<MediaItemsResponse>('mediaitems')
+      .pipe(
+        map((response: MediaItemsResponse) => {
+          return response.mediaItems;
+        })
+      );
   }
 
   add(mediaItem) {
@@ -71,7 +74,11 @@ export class MediaItemService {
   }
 }
 
-interface MediaItem {
+interface MediaItemsResponse {
+  mediaItems: MediaItem[];
+}
+
+export interface MediaItem {
   id: number;
   name: string;
   medium: string;
@@ -79,8 +86,4 @@ interface MediaItem {
   year: number;
   watchedOn: number;
   isFavorite: boolean;
-}
-
-interface MediaItemResponse {
-  mediaItems: MediaItem[]
 }

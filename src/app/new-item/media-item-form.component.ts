@@ -9,7 +9,6 @@ import { lookupListToken } from '../providers';
   templateUrl: './media-item-form.component.html',
   styleUrls: ['./media-item-form.component.css']
 })
-
 export class MediaItemFormComponent implements OnInit {
   form: FormGroup;
 
@@ -17,7 +16,7 @@ export class MediaItemFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private mediaItemService: MediaItemService,
     @Inject(lookupListToken) public lookupLists,
-    private router: Router) { }
+    private router: Router) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -53,7 +52,7 @@ export class MediaItemFormComponent implements OnInit {
   onSubmit(mediaItem) {
     this.mediaItemService.add(mediaItem)
       .subscribe(() => {
-        this.router.navigate(['/', mediaItem.medium])
+        this.router.navigate(['/', mediaItem.medium]);
       });
   }
 }

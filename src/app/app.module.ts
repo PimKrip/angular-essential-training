@@ -31,5 +31,4 @@ import { lookupListToken, lookupLists } from './providers';
     AppComponent
   ]
 })
-
-export class AppModule { }
+export class AppModule {}

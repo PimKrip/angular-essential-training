@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-
 export class MediaItemService {
   mediaItems = [
     {
@@ -55,7 +54,7 @@ export class MediaItemService {
   }
 
   add(mediaItem) {
-    this.mediaItems.push(mediaItem)
+    this.mediaItems.push(mediaItem);
   }
 
   delete(mediaItem) {
